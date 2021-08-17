@@ -11,11 +11,13 @@ namespace H3_TDD_Bank
         public int CardId { get; protected set; }
         public string CardOwner { get; protected set; }
         public string CardNumber { get; protected set; }
-        protected Card(int cardId, string cardOwner, string cardNumber)
+        public BankAccount AttachedBankAccount { get; set; }
+        protected Card(int cardId, string cardOwner, string cardNumber, BankAccount account)
         {
             CardId = cardId;
             CardOwner = cardOwner;
             CardNumber = cardNumber;
+            AttachedBankAccount = account;
         }
 
     }

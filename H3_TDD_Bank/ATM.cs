@@ -8,18 +8,45 @@ namespace H3_TDD_Bank
 {
     public class ATM
     {
-        public BankAccount CurrentAccount { get; set; }
-
+        public BankAccount CurrentAccount { get; private set; }
+        public bool LoggedIn { get; private set; }
         MoneyProcessor moneyProcessor = new MoneyProcessor();
 
-        public void Login(BankAccount bankAccount,string pinCode)
+        public void InsertCard(Card cardToInsert)
         {
+            if (cardToInsert != null)
+            {
+                CurrentAccount = cardToInsert.AttachedBankAccount;
+            }
+            else
+                throw new ArgumentNullException("You have to insert a card");
         }
-        
 
-        public int WithDrawMoney(Account account, int withDrawAmount)
+        public void Login(BankAccount bankAccount, string pinCode)
         {
-            moneyProcessor.WithDrawMoney(account, withDrawAmount);
+            if (bankAccount != null && !string.IsNullOrWhiteSpace(pinCode))
+            {
+                if (bankAccount.pinCode == pinCode)
+                {
+                    LoggedIn = true;
+                }
+                else
+                    throw new ArgumentException("The pincode was wrong");
+            }
+            else
+                throw new ArgumentException();
+        }
+
+        public string WithDrawMoney(Account account, int withDrawAmount)
+        {
+            if (account != null)
+            {
+                return "You withdrew: " + moneyProcessor.WithDrawMoney(account, withDrawAmount);
+            }
+            else
+                return "You have not chosen a valid account";
+
+
         }
     }
 }

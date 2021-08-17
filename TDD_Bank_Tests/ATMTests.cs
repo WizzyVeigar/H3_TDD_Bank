@@ -12,7 +12,24 @@ namespace TDD_Bank_Tests
 {
     public class ATMTests
     {
-        private ATM atm;
+        private ATM atm = new ATM();
+
+        [Fact]
+        public void InsertCard_ValidCardInserted()
+        {
+            Card card = new MasterCard(2, "Michael", "50131051", new BankAccount());
+
+            atm.InsertCard(card);
+
+            Assert.True(atm.CurrentAccount != null);
+        }
+
+        [Fact]
+        public void InsertCard_NullParam()
+        {
+            Assert.Throws<ArgumentNullException>(() => atm.InsertCard(null));
+        }
+
 
         [Fact]
         public void Login_ValidLogin()
@@ -22,12 +39,10 @@ namespace TDD_Bank_Tests
                 pinCode = "5423"
             };
             string pinCode = "5423";
-            atm = new ATM();
 
             atm.Login(bank, pinCode);
 
-            Assert.True(atm.CurrentAccount == bank);
-
+            Assert.True(atm.LoggedIn);
         }
 
         [Theory]
