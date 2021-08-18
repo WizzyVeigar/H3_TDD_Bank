@@ -62,6 +62,7 @@
     <Compile Include="ATM.cs" />
     <Compile Include="Models\BankAccount.cs" />
     <Compile Include="Models\Card.cs" />
+    <Compile Include="Models\MasterCard.cs" />
     <Compile Include="MoneyProcessor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -109,7 +109,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ATMTests.cs" />
-    <Compile Include="MasterCard.cs" />
     <Compile Include="MoneyProcessorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
